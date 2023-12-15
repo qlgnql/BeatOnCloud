@@ -1,4 +1,4 @@
-from flask import Blueprint, url_for, render_template, flash, request, session, g
+from flask import Blueprint, url_for, render_template, flash, request, session, g, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 from flask_login import login_user
@@ -17,8 +17,6 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = User.query.get(user_id)
-        session.permanent = True
-        bp.permanent_session_lifetime = timedelta(days=7) 
 
 @bp.route("/login", methods=("GET", "POST"))
 def login():
@@ -32,6 +30,15 @@ def login():
         if error is None:
             session.clear()
             session["user_id"] = user.id
+            
+            if form.remember.data:
+                # 로그인 상태를 유지하는 경우에만 세션을 영구적으로 설정
+                session.permanent = True
+                current_app.permanent_session_lifetime = timedelta(minutes=1)
+            else:
+                # 로그인 상태를 유지하지 않는 경우 브라우저 세션 동안만 세션 유지
+                session.permanent = False
+                
             login_user(user, remember=form.remember.data)
             
             return redirect(url_for("main.index"))
