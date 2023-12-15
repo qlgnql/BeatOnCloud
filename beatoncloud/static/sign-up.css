@@ -1,0 +1,39 @@
+.form-signin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  max-width: 350px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-signin input[type="email"],
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+hr.separator {
+  margin: 10% auto;
+  border: 0;
+  height: 0;
+  border-top: 1px solid #fff;
+}
+
+.login-signup-now {
+  text-align: center;
+  color: #fff;
+}
+
+.login-signup-now a {
+  color: #6ea8fe;
+  text-decoration: none;
+}
+
+button {
+  margin-top: 10px;
+}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<link href="{{ url_for('static', filename='emotion-input.css') }}" rel="stylesheet">
+
+<div id="background-img">
+  <img src="../static/assets/img/emotion-input-background-img.jpg">
+</div>
+
+<div class="search">
+  <input type="text" placeholder="오늘의 기분, 감정을 입력해보세요">
+  <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+</div>
+
+{% if g.user %}
+<div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    {{ g.user.email }}
+  </a>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{{ url_for('auth.logout')}}">로그아웃</a></li>
+  </ul>
+</div>
+{% else %}
+<div class="btn-group">
+  <a href="{{ url_for('auth.login')}}" class="btn btn-secondary" aria-current="page">로그인</a>
+  {% endif %}
+</div>
+
+<script src="../static/assets/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

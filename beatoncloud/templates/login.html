@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<link href="{{ url_for('static', filename='login.css') }}" rel="stylesheet">
+
+<div id="background-img">
+  <img src="{{ url_for('static', filename='assets/img/main-background-img.jpg') }}" alt="배경 이미지">
+</div>
+
+<main class="form-signin w-100 m-auto">
+  <form method="post">
+    {{ form.csrf_token }}
+    {% include "form_errors.html" %}
+    <h1 class="h3 mb-3 fw-normal">로그인</h1>
+
+    <div class="form-floating">
+      <label for="email">이메일</label>
+      {{ form.email(class="form-control", placeholder="name@example.com") }}
+    </div>
+
+    <div class="form-floating">
+      <label for="password1">비밀번호</label>
+      {{ form.password(class="form-control", placeholder="password") }}
+    </div>
+
+    <div class="remember_check">
+      {{ form.remember(class="input_remember", id="remember", value="y") }}
+      <label for="remember" class="remember_text">"로그인 상태 유지"</label>
+    </div>
+
+    <button class="btn btn-primary w-100 py-2" type="submit">로그인</button>
+    <hr role="presentation" class="separator">
+    <p class="login-signup-now">회원이 아닌가요? <a class target="_self" href="{{ url_for('auth.signup') }}">지금 가입하세요.</a></p>
+  </form>
+</main>
+<script src="{{ url_for('static', filename='assets/dist/js/bootstrap.bundle.min.js') }}"></script>
+{% endblock %}

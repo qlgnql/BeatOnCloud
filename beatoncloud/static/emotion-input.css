@@ -1,0 +1,33 @@
+.search {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+}
+
+input {
+    width: calc(100% - 20px);
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+img {
+    position: absolute;
+    width: 17px;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+}
+
+.btn-group {
+    position: absolute;
+    left: 80%;
+}
+
+.btn {
+    position: absolute;
+    left: 80%;
+}
